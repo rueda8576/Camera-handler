@@ -1,0 +1,38 @@
+{
+    "files.associations": {
+        "stdio.h": "c",
+        "stdlib.h": "c",
+        "vimbac.h": "c",
+        "inet.h": "c",
+        "stdbool.h": "c",
+        "time.h": "c",
+        "unistd.h": "c",
+        "pthread.h": "c",
+        "in.h": "c",
+        "socket.h": "c",
+        "functional": "c",
+        "cstdlib": "c",
+        "system_error": "c",
+        "types.h": "c",
+        "netdb.h": "c",
+        "*.tcc": "c",
+        "fstream": "c",
+        "get_telecomand.h": "c",
+        "algorithm": "c",
+        "string.h": "c",
+        "camera_handler.h": "c",
+        "pruebas.h": "c",
+        "vmbtransform.h": "c",
+        "chrono": "c",
+        "array": "c",
+        "string": "c",
+        "string_view": "c",
+        "pruebas_server.h": "c"
+    },
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#2C3012",
+        "titleBar.activeBackground": "#3E4319",
+        "titleBar.activeForeground": "#F9FAF2"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+}
