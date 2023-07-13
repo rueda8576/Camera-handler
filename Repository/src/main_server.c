@@ -56,6 +56,7 @@ int main(int argc, char* argv[])
 {
     VmbError_t error = VmbErrorSuccess;
     
+    system("clear");
     //BUCLE PRINCIPAL
     while (true)
     {   

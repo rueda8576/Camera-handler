@@ -14,7 +14,7 @@ char* Get_Telecomand()
     
 
     //Destinatary IP for frames
-    const char*         client_ip                           = "192.168.1.33";
+    const char*         client_ip                           = "192.168.10.33";
     int                 client_port                         = CLIENT_PORT;
     int                 server_port                         = SERVER_PORT;
 
@@ -82,7 +82,7 @@ VmbError_t GetFeatures()
 
     //Destinatary IP for frames
     //"192.168.1.50";
-    const char*         client_ip               = "192.168.1.33";
+    const char*         client_ip               = "192.168.10.33";
     int                 client_port             = CLIENT_PORT;
     int                 server_port             = SERVER_PORT;
 
@@ -314,7 +314,7 @@ VmbError_t ImageAcquisition()
     int         server_port             = SERVER_PORT;
 
     //Destinatary IP for frames
-    const char*         client_ip               = "192.168.1.33";
+    const char*         client_ip               = "192.168.10.33";
     int                 client_port             = CLIENT_PORT;
     
     //const char*         processor_ip            = "192.168.1.11";
@@ -1114,11 +1114,12 @@ VmbError_t StopStreaming(VmbHandle_t handle)
         VmbShutdown();
         return 1;
     }
-
+    
     printf("Video streaming ended\n");
 
     // Cleanup
     VmbCaptureEnd(handle);
+    VmbCaptureQueueFlush(handle);
     VmbCameraClose(handle);
     VmbShutdown();
 
@@ -1139,7 +1140,7 @@ VmbError_t StartStreaming()
     
 
     //Destinatary IP for frames
-    const char*         client_ip               = "192.168.1.33";
+    const char*         client_ip               = "192.168.10.33";
     int                 client_port             = CLIENT_PORT;
     int                 server_port             = SERVER_PORT;
     VmbInt64_t          MulticastIPAddress      = 4026531834;
@@ -1396,19 +1397,16 @@ VmbError_t StartStreaming()
         perror("Error getting client option\n");
         exit(EXIT_FAILURE);
     }
-
-    //Stop video streaming (multicast)
-    if (strcmp(telemetry, "STOP") == 0)
+    
+    error = StopStreaming(cameraHandle);
+    if (error != VmbErrorSuccess)
     {
-        error = StopStreaming(cameraHandle);
-        if (error != VmbErrorSuccess)
-        {
-            printf("Error stopping streaming: %d\n", error);
-            return 1;
-        }
+        printf("Error stopping streaming: %d\n", error);
+        return 1;
     }
     free(telemetry);
 
+    sleep(1);
     //Close socket
     if (close(server_socket) < 0)
     {

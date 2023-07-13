@@ -31,7 +31,6 @@ CFLAGS              = $(COMMON_CFLAGS) \
                       $(VIMBAC_CFLAGS)
 
 OBJ_FILES           = $(OBJ_DIR)/main_server.o \
-					  $(OBJ_DIR)/Get_Telecomand.o \
 					  $(OBJ_DIR)/camera_handler.o \
 					  $(OBJ_DIR)/pruebas_server.o
 
